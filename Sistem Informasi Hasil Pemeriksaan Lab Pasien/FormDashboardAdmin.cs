@@ -222,6 +222,12 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             f.Show();
             this.Close();
         }
+
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            FormPasien fp = new FormPasien();
+            fp.Show();
+        }
     }
     
 }
