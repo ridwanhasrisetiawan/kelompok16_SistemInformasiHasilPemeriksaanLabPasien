@@ -31,13 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnUPDATE = new System.Windows.Forms.Button();
+            this.btnHAPUS = new System.Windows.Forms.Button();
+            this.btnCLEAR = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnCARI = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -80,33 +80,34 @@
             this.button1.Text = "LOGOUT";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnUPDATE
             // 
-            this.button2.Location = new System.Drawing.Point(399, 194);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "UPDATE";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnUPDATE.Location = new System.Drawing.Point(399, 194);
+            this.btnUPDATE.Name = "btnUPDATE";
+            this.btnUPDATE.Size = new System.Drawing.Size(75, 23);
+            this.btnUPDATE.TabIndex = 3;
+            this.btnUPDATE.Text = "UPDATE";
+            this.btnUPDATE.UseVisualStyleBackColor = true;
+            this.btnUPDATE.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnHAPUS
             // 
-            this.button3.Location = new System.Drawing.Point(480, 194);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "HAPUS";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnHAPUS.Location = new System.Drawing.Point(480, 194);
+            this.btnHAPUS.Name = "btnHAPUS";
+            this.btnHAPUS.Size = new System.Drawing.Size(75, 23);
+            this.btnHAPUS.TabIndex = 4;
+            this.btnHAPUS.Text = "HAPUS";
+            this.btnHAPUS.UseVisualStyleBackColor = true;
+            this.btnHAPUS.Click += new System.EventHandler(this.btnHAPUS_Click);
             // 
-            // button4
+            // btnCLEAR
             // 
-            this.button4.Location = new System.Drawing.Point(561, 194);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "CLEAR";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnCLEAR.Location = new System.Drawing.Point(561, 194);
+            this.btnCLEAR.Name = "btnCLEAR";
+            this.btnCLEAR.Size = new System.Drawing.Size(75, 23);
+            this.btnCLEAR.TabIndex = 5;
+            this.btnCLEAR.Text = "CLEAR";
+            this.btnCLEAR.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -136,15 +137,15 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button8
+            // btnCARI
             // 
-            this.button8.Location = new System.Drawing.Point(642, 194);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "CARI";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnCARI.Location = new System.Drawing.Point(642, 194);
+            this.btnCARI.Name = "btnCARI";
+            this.btnCARI.Size = new System.Drawing.Size(75, 23);
+            this.btnCARI.TabIndex = 9;
+            this.btnCARI.Text = "CARI";
+            this.btnCARI.UseVisualStyleBackColor = true;
+            this.btnCARI.Click += new System.EventHandler(this.button8_Click);
             // 
             // lblStatus
             // 
@@ -259,13 +260,13 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnCARI);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnCLEAR);
+            this.Controls.Add(this.btnHAPUS);
+            this.Controls.Add(this.btnUPDATE);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -284,13 +285,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnUPDATE;
+        private System.Windows.Forms.Button btnHAPUS;
+        private System.Windows.Forms.Button btnCLEAR;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnCARI;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
