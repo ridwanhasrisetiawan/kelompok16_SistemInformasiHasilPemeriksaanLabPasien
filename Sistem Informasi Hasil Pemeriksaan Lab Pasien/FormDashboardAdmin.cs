@@ -81,7 +81,7 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         }
         
 
-        private void button8_Click(object sender, EventArgs e)
+        private void btnCARI_Click(object sender, EventArgs e)
         {
 
         }
@@ -175,6 +175,33 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             txtHasilLab.Clear();
         }
 
+        private void btnCARI_Click_1(object sender, EventArgs e)
+        {
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM PEMERIKSAAN_LAB WHERE id_pasien LIKE @cari", conn);
+            cmd.Parameters.AddWithValue("@cari", "%" + btnCARI.Text + "%");
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            dgvPemeriksaan.Rows.Clear();
+
+            while (reader.Read())
+            {
+                dgvPemeriksaan.Rows.Add(
+                    reader["id_periksa"],
+                    reader["id_pasien"],
+                    reader["id_dokter"],
+                    reader["id_admin"],
+                    reader["tgl_periksa"],
+                    reader["hasil_lab"],
+                    reader["status_validasi"]
+                );
+            }
+
+            reader.Close();
+            conn.Close();
+        }
     }
     
 }

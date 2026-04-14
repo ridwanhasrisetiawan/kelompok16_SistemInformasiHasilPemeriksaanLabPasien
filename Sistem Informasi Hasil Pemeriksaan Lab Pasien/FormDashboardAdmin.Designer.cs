@@ -147,7 +147,7 @@
             this.btnCARI.TabIndex = 9;
             this.btnCARI.Text = "CARI";
             this.btnCARI.UseVisualStyleBackColor = true;
-            this.btnCARI.Click += new System.EventHandler(this.button8_Click);
+            this.btnCARI.Click += new System.EventHandler(this.btnCARI_Click_1);
             // 
             // lblStatus
             // 
