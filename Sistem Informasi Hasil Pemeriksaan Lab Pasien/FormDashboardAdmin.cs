@@ -53,8 +53,33 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (txtPeriksa.Text == "")
+            {
+                MessageBox.Show("Pilih data dulu!");
+                return;
+            }
 
+            if (MessageBox.Show("Yakin update data?", "Konfirmasi", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("UPDATE PEMERIKSAAN_LAB SET id_pasien=@pasien, id_dokter=@dokter, hasil_lab=@hasil WHERE id_periksa=@id", conn);
+
+            cmd.Parameters.AddWithValue("@id", txtPeriksa.Text);
+            cmd.Parameters.AddWithValue("@pasien", txtId_Pasien.Text);
+            cmd.Parameters.AddWithValue("@dokter", txtId_Dokter.Text);
+            cmd.Parameters.AddWithValue("@hasil", txtHasilLab.Text);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Data berhasil diupdate");
+            ClearForm();
+            TampilData();
+            HitungData();
         }
+        
 
         private void button8_Click(object sender, EventArgs e)
         {

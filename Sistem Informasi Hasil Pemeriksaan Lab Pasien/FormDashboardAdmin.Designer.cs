@@ -45,7 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtId_Pasien = new System.Windows.Forms.TextBox();
             this.txtId_Dokter = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPeriksa = new System.Windows.Forms.TextBox();
             this.txtHasilLab = new System.Windows.Forms.TextBox();
             this.dgvPasien = new System.Windows.Forms.DataGridView();
             this.dgvPemeriksaan = new System.Windows.Forms.DataGridView();
@@ -207,12 +207,12 @@
             this.txtId_Dokter.Size = new System.Drawing.Size(100, 22);
             this.txtId_Dokter.TabIndex = 16;
             // 
-            // textBox3
+            // txtPeriksa
             // 
-            this.textBox3.Location = new System.Drawing.Point(259, 157);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(49, 22);
-            this.textBox3.TabIndex = 17;
+            this.txtPeriksa.Location = new System.Drawing.Point(259, 157);
+            this.txtPeriksa.Name = "txtPeriksa";
+            this.txtPeriksa.Size = new System.Drawing.Size(49, 22);
+            this.txtPeriksa.TabIndex = 17;
             // 
             // txtHasilLab
             // 
@@ -251,7 +251,7 @@
             this.Controls.Add(this.dgvPemeriksaan);
             this.Controls.Add(this.dgvPasien);
             this.Controls.Add(this.txtHasilLab);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtPeriksa);
             this.Controls.Add(this.txtId_Dokter);
             this.Controls.Add(this.txtId_Pasien);
             this.Controls.Add(this.label7);
@@ -298,7 +298,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtId_Pasien;
         private System.Windows.Forms.TextBox txtId_Dokter;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPeriksa;
         private System.Windows.Forms.TextBox txtHasilLab;
         private System.Windows.Forms.DataGridView dgvPasien;
         private System.Windows.Forms.DataGridView dgvPemeriksaan;
