@@ -228,6 +228,27 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             FormPasien fp = new FormPasien();
             fp.Show();
         }
+
+        void TampilPasien()
+        {
+            try
+            {
+                conn.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM PASIEN", conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgvPasien.DataSource = dt;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                conn.Close();
+            }
+        }
     }
     
 }
