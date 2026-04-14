@@ -96,7 +96,36 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void btnUPDATE_Click(object sender, EventArgs e)
         {
+            if (txtIDPeriksa.Text == "")
+            {
+                MessageBox.Show("Masukkan ID Periksa!");
+                return;
+            }
 
+            try
+            {
+                koneksi();
+
+                string query = "UPDATE PEMERIKSAAN_LAB SET id_pasien=@p, hasil_lab=@h WHERE id_periksa=@id";
+
+                // WAJIB: langsung buat object cmd
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@p", txtIDPasien.Text);
+                    cmd.Parameters.AddWithValue("@h", txtHasilLab.Text);
+                    cmd.Parameters.AddWithValue("@id", txtIDPeriksa.Text);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Data berhasil diupdate");
+                tampilData();
+                clearForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error update: " + ex.Message);
+            }
         }
 
         private void btnHAPUS_Click(object sender, EventArgs e)
