@@ -16,5 +16,10 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
             InitializeComponent();
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
