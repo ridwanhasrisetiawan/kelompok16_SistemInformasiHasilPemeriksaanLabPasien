@@ -64,7 +64,34 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void btnSIMPAN_Click(object sender, EventArgs e)
         {
+            if (txtIDPasien.Text == "" || txtHasilLab.Text == "")
+            {
+                MessageBox.Show("Data harus diisi!");
+                return;
+            }
 
+            try
+            {
+                koneksi();
+
+                string query = "INSERT INTO PEMERIKSAAN_LAB (id_pasien, hasil_lab, status_validasi) VALUES (@p,@h,'Pending')";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@p", txtIDPasien.Text);
+                    cmd.Parameters.AddWithValue("@h", txtHasilLab.Text);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Data berhasil disimpan");
+                tampilData();
+                clearForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error simpan: " + ex.Message);
+            }
         }
 
         private void btnUPDATE_Click(object sender, EventArgs e)
