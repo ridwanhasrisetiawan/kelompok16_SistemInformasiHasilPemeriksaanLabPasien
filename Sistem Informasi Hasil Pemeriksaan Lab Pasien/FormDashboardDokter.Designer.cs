@@ -109,6 +109,7 @@
             this.btnSIMPAN.TabIndex = 7;
             this.btnSIMPAN.Text = "SIMPAN";
             this.btnSIMPAN.UseVisualStyleBackColor = true;
+            this.btnSIMPAN.Click += new System.EventHandler(this.btnSIMPAN_Click);
             // 
             // btnUPDATE
             // 
@@ -118,6 +119,7 @@
             this.btnUPDATE.TabIndex = 8;
             this.btnUPDATE.Text = "UPDATE";
             this.btnUPDATE.UseVisualStyleBackColor = true;
+            this.btnUPDATE.Click += new System.EventHandler(this.btnUPDATE_Click);
             // 
             // btnHAPUS
             // 
@@ -127,6 +129,7 @@
             this.btnHAPUS.TabIndex = 9;
             this.btnHAPUS.Text = "HAPUS";
             this.btnHAPUS.UseVisualStyleBackColor = true;
+            this.btnHAPUS.Click += new System.EventHandler(this.btnHAPUS_Click);
             // 
             // btnCARI
             // 
@@ -136,6 +139,7 @@
             this.btnCARI.TabIndex = 10;
             this.btnCARI.Text = "CARI";
             this.btnCARI.UseVisualStyleBackColor = true;
+            this.btnCARI.Click += new System.EventHandler(this.btnCARI_Click);
             // 
             // dataGridView1
             // 
