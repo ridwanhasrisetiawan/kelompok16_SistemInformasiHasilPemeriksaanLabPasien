@@ -18,7 +18,25 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         public FormDashboardDokter()
         {
             InitializeComponent();
+            tampilData();
         }
+
+        void koneksi()
+        {
+            try
+            {
+                conn = new SqlConnection(connStr);
+                conn.Open();
+
+                MessageBox.Show("Koneksi berhasil"); // TEST
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Koneksi gagal: " + ex.Message);
+            }
+        }
+
+
 
         private void label4_Click(object sender, EventArgs e)
         {
