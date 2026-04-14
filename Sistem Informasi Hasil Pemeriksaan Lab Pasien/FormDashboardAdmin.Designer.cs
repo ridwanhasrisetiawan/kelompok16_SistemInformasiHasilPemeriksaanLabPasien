@@ -43,10 +43,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtId_Pasien = new System.Windows.Forms.TextBox();
+            this.txtId_Dokter = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtHasilLab = new System.Windows.Forms.TextBox();
             this.dgvPasien = new System.Windows.Forms.DataGridView();
             this.dgvPemeriksaan = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasien)).BeginInit();
@@ -192,20 +192,20 @@
             this.label7.Text = "Hasil Laboratorium";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // textBox1
+            // txtId_Pasien
             // 
-            this.textBox1.Location = new System.Drawing.Point(130, 157);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtId_Pasien.Location = new System.Drawing.Point(130, 157);
+            this.txtId_Pasien.Name = "txtId_Pasien";
+            this.txtId_Pasien.Size = new System.Drawing.Size(100, 22);
+            this.txtId_Pasien.TabIndex = 15;
+            this.txtId_Pasien.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // txtId_Dokter
             // 
-            this.textBox2.Location = new System.Drawing.Point(130, 198);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 16;
+            this.txtId_Dokter.Location = new System.Drawing.Point(130, 198);
+            this.txtId_Dokter.Name = "txtId_Dokter";
+            this.txtId_Dokter.Size = new System.Drawing.Size(100, 22);
+            this.txtId_Dokter.TabIndex = 16;
             // 
             // textBox3
             // 
@@ -214,14 +214,14 @@
             this.textBox3.Size = new System.Drawing.Size(49, 22);
             this.textBox3.TabIndex = 17;
             // 
-            // textBox4
+            // txtHasilLab
             // 
-            this.textBox4.Location = new System.Drawing.Point(356, 117);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(361, 45);
-            this.textBox4.TabIndex = 18;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.txtHasilLab.Location = new System.Drawing.Point(356, 117);
+            this.txtHasilLab.Multiline = true;
+            this.txtHasilLab.Name = "txtHasilLab";
+            this.txtHasilLab.Size = new System.Drawing.Size(361, 45);
+            this.txtHasilLab.TabIndex = 18;
+            this.txtHasilLab.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // dgvPasien
             // 
@@ -250,10 +250,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvPemeriksaan);
             this.Controls.Add(this.dgvPasien);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtHasilLab);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtId_Dokter);
+            this.Controls.Add(this.txtId_Pasien);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label5);
@@ -296,10 +296,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtId_Pasien;
+        private System.Windows.Forms.TextBox txtId_Dokter;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtHasilLab;
         private System.Windows.Forms.DataGridView dgvPasien;
         private System.Windows.Forms.DataGridView dgvPemeriksaan;
     }

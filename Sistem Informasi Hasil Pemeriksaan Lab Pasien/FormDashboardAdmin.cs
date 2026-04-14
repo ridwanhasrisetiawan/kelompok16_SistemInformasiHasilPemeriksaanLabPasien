@@ -26,8 +26,30 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void button7_Click(object sender, EventArgs e)
         {
+            if (txtId_Pasien.Text == "" || txtId_Dokter.Text == "" || txtHasilLab.Text == "")
+            {
+                MessageBox.Show("Semua data harus diisi!");
+                return;
+            }
 
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO PEMERIKSAAN_LAB (id_pasien, id_dokter, id_admin, hasil_lab) VALUES (@pasien,@dokter,@admin,@hasil)", conn);
+
+            cmd.Parameters.AddWithValue("@pasien", txtId_Pasien.Text);
+            cmd.Parameters.AddWithValue("@dokter", txtId_Dokter.Text);
+            cmd.Parameters.AddWithValue("@admin", 1);
+            cmd.Parameters.AddWithValue("@hasil", txtHasilLab.Text);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Data berhasil disimpan");
+            ClearForm();
+            TampilData();
+            HitungData();
         }
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
