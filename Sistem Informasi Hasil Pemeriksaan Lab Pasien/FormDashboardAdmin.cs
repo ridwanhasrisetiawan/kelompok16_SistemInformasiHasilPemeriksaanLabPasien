@@ -43,5 +43,28 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormDashboardAdmin_Load(object sender, EventArgs e)
+        {
+            
+        }
+        void CekKoneksi()
+        {
+            try
+            {
+                conn.Open();
+                lblStatus.Text = "Status: Koneksi Berhasil";
+                conn.Close();
+            }
+            catch
+            {
+                lblStatus.Text = "Status: Koneksi Gagal";
+            }
+        }
     }
 }
