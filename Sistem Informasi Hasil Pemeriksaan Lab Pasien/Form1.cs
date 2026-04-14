@@ -21,7 +21,9 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            cmbRole.Items.Add("admin");
+            cmbRole.Items.Add("dokter");
+            cmbRole.Items.Add("pasien");
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
