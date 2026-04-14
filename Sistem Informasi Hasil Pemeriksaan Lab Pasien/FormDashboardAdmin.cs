@@ -66,5 +66,12 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 lblStatus.Text = "Status: Koneksi Gagal";
             }
         }
+        void TampilData()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM PEMERIKSAAN_LAB", conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dgvPemeriksaan.DataSource = dt;
+        }
     }
 }

@@ -47,10 +47,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.dgvPasien = new System.Windows.Forms.DataGridView();
+            this.dgvPemeriksaan = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPasien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPemeriksaan)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -223,33 +223,33 @@
             this.textBox4.TabIndex = 18;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // dataGridView1
+            // dgvPasien
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(386, 321);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(361, 122);
-            this.dataGridView1.TabIndex = 19;
+            this.dgvPasien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPasien.Location = new System.Drawing.Point(386, 321);
+            this.dgvPasien.Name = "dgvPasien";
+            this.dgvPasien.RowHeadersWidth = 51;
+            this.dgvPasien.RowTemplate.Height = 24;
+            this.dgvPasien.Size = new System.Drawing.Size(361, 122);
+            this.dgvPasien.TabIndex = 19;
             // 
-            // dataGridView2
+            // dgvPemeriksaan
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(19, 321);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(361, 122);
-            this.dataGridView2.TabIndex = 20;
+            this.dgvPemeriksaan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPemeriksaan.Location = new System.Drawing.Point(19, 321);
+            this.dgvPemeriksaan.Name = "dgvPemeriksaan";
+            this.dgvPemeriksaan.RowHeadersWidth = 51;
+            this.dgvPemeriksaan.RowTemplate.Height = 24;
+            this.dgvPemeriksaan.Size = new System.Drawing.Size(361, 122);
+            this.dgvPemeriksaan.TabIndex = 20;
             // 
             // FormDashboardAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvPemeriksaan);
+            this.Controls.Add(this.dgvPasien);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -272,8 +272,8 @@
             this.Name = "FormDashboardAdmin";
             this.Text = "FormDashboardAdmin";
             this.Load += new System.EventHandler(this.FormDashboardAdmin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPasien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPemeriksaan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,7 +300,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvPasien;
+        private System.Windows.Forms.DataGridView dgvPemeriksaan;
     }
 }
