@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNama = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtIdPasien = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,33 +39,33 @@
             this.btnSIMPAN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNama
             // 
-            this.textBox1.Location = new System.Drawing.Point(199, 125);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(182, 22);
-            this.textBox1.TabIndex = 0;
+            this.txtNama.Location = new System.Drawing.Point(199, 125);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.Size = new System.Drawing.Size(182, 22);
+            this.txtNama.TabIndex = 0;
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(199, 160);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(182, 22);
-            this.textBox2.TabIndex = 1;
+            this.txtEmail.Location = new System.Drawing.Point(199, 160);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(182, 22);
+            this.txtEmail.TabIndex = 1;
             // 
-            // textBox3
+            // txtIdPasien
             // 
-            this.textBox3.Location = new System.Drawing.Point(199, 94);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 2;
+            this.txtIdPasien.Location = new System.Drawing.Point(199, 94);
+            this.txtIdPasien.Name = "txtIdPasien";
+            this.txtIdPasien.Size = new System.Drawing.Size(100, 22);
+            this.txtIdPasien.TabIndex = 2;
             // 
-            // textBox4
+            // txtPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(199, 199);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(182, 22);
-            this.textBox4.TabIndex = 3;
+            this.txtPassword.Location = new System.Drawing.Point(199, 199);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(182, 22);
+            this.txtPassword.TabIndex = 3;
             // 
             // label1
             // 
@@ -112,6 +112,7 @@
             this.btnSIMPAN.TabIndex = 8;
             this.btnSIMPAN.Text = "SIMPAN";
             this.btnSIMPAN.UseVisualStyleBackColor = true;
+            this.btnSIMPAN.Click += new System.EventHandler(this.btnSIMPAN_Click);
             // 
             // FormPasien
             // 
@@ -123,10 +124,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtIdPasien);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtNama);
             this.Name = "FormPasien";
             this.Text = "FormPasien";
             this.Load += new System.EventHandler(this.FormPasien_Load);
@@ -137,10 +138,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNama;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtIdPasien;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

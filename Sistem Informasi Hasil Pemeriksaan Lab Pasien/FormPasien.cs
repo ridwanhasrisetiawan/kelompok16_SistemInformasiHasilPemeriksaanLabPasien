@@ -29,5 +29,20 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
 
         }
+
+        private void btnSIMPAN_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand(
+            "INSERT INTO PASIEN (nama_pasien, email, password) VALUES (@nama, @email, @pass)", conn);
+
+            cmd.Parameters.AddWithValue("@nama", txtNama.Text);
+            cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 }
