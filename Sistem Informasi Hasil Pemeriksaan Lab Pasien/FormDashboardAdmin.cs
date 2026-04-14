@@ -156,5 +156,11 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             TampilData();
             HitungData();
         }
+
+        private void btnCLEAR_Click(object sender, EventArgs e)
+        {
+            ClearForm();
+        }
+    }
     }
 }
