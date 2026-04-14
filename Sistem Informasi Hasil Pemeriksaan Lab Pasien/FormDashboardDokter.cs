@@ -130,7 +130,32 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void btnHAPUS_Click(object sender, EventArgs e)
         {
+            if (txtIDPeriksa.Text == "")
+            {
+                MessageBox.Show("Masukkan ID Periksa!");
+                return;
+            }
 
+            try
+            {
+                koneksi();
+
+                string query = "DELETE FROM PEMERIKSAAN_LAB WHERE id_periksa=@id";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", txtIDPeriksa.Text);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Data berhasil dihapus");
+                tampilData();
+                clearForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hapus: " + ex.Message);
+            }
         }
 
         private void btnCARI_Click(object sender, EventArgs e)
