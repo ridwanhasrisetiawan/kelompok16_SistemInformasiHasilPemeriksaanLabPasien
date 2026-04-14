@@ -36,7 +36,26 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             }
         }
 
+        void tampilData()
+        {
+            try
+            {
+                koneksi();
 
+                SqlDataAdapter da = new SqlDataAdapter(
+                    "SELECT id_periksa, id_pasien, hasil_lab, tgl_periksa, status_validasi FROM PEMERIKSAAN_LAB",
+                    conn);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error tampil data: " + ex.Message);
+            }
+        }
 
         private void label4_Click(object sender, EventArgs e)
         {
