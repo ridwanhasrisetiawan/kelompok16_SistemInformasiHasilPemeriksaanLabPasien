@@ -64,6 +64,18 @@
     <Compile Include="FormDashboardDokter.Designer.cs">
       <DependentUpon>FormDashboardDokter.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDashboardPasien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboardPasien.Designer.cs">
+      <DependentUpon>FormDashboardPasien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPasien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPasien.Designer.cs">
+      <DependentUpon>FormPasien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
