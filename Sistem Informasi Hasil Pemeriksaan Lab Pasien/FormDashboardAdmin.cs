@@ -73,5 +73,16 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             da.Fill(dt);
             dgvPemeriksaan.DataSource = dt;
         }
+        void HitungData()
+        {
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM PEMERIKSAAN_LAB", conn);
+            int total = (int)cmd.ExecuteScalar();
+
+            lblTotal.Text = "Total Data: " + total;
+
+            conn.Close();
+        }
     }
 }
