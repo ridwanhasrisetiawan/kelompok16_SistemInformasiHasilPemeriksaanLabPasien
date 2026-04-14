@@ -245,6 +245,7 @@
             this.dgvPemeriksaan.RowTemplate.Height = 24;
             this.dgvPemeriksaan.Size = new System.Drawing.Size(361, 122);
             this.dgvPemeriksaan.TabIndex = 20;
+            this.dgvPemeriksaan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPemeriksaan_CellContentClick);
             // 
             // FormDashboardAdmin
             // 

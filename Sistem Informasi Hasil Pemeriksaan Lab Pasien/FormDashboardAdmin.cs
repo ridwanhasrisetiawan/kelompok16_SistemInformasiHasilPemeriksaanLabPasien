@@ -202,6 +202,26 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             reader.Close();
             conn.Close();
         }
+
+        private void dgvPemeriksaan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = e.RowIndex;
+
+            if (i >= 0)
+            {
+                txtPeriksa.Text = dgvPemeriksaan.Rows[i].Cells[0].Value.ToString();
+                txtId_Pasien.Text = dgvPemeriksaan.Rows[i].Cells[1].Value.ToString();
+                txtId_Dokter.Text = dgvPemeriksaan.Rows[i].Cells[2].Value.ToString();
+                txtHasilLab.Text = dgvPemeriksaan.Rows[i].Cells[5].Value.ToString();
+            }
+        }
+
+        private void btnLogout_Click_1(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
+            this.Close();
+        }
     }
     
 }
