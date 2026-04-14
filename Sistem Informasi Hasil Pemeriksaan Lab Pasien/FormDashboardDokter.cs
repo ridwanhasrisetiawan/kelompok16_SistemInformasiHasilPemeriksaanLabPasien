@@ -13,7 +13,8 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 {
     public partial class FormDashboardDokter: Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=LAPTOP-4VAVDOFH\\WAWANLOMBOK;Initial Catalog=LayananKesehatanDB;Integrated Security=True");
+        string connStr ="Data Source=LAPTOP-4VAVDOFH\\WAWANLOMBOK;Initial Catalog=LayananKesehatanDB;Integrated Security=True";
+        SqlConnection conn;
 
         public FormDashboardDokter()
         {
@@ -28,7 +29,7 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 conn = new SqlConnection(connStr);
                 conn.Open();
 
-                MessageBox.Show("Koneksi berhasil"); // TEST
+                MessageBox.Show("Koneksi berhasil"); 
             }
             catch (Exception ex)
             {
@@ -196,5 +197,24 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 MessageBox.Show("Error cari: " + ex.Message);
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                txtIDPeriksa.Text = row.Cells["id_periksa"].Value.ToString();
+                txtIDPasien.Text = row.Cells["id_pasien"].Value.ToString();
+                txtHasilLab.Text = row.Cells["hasil_lab"].Value.ToString();
+            }
+        }
+        void clearForm()
+        {
+            txtIDPeriksa.Text = "";
+            txtIDPasien.Text = "";
+            txtHasilLab.Text = "";
+        }
+
     }
 }
