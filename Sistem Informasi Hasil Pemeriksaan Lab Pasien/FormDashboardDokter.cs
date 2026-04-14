@@ -160,7 +160,41 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void btnCARI_Click(object sender, EventArgs e)
         {
+            if (txtIDPeriksa.Text == "")
+            {
+                MessageBox.Show("Masukkan ID Periksa!");
+                return;
+            }
 
+            try
+            {
+                koneksi();
+
+                string query = "SELECT * FROM PEMERIKSAAN_LAB WHERE id_periksa=@id";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", txtIDPeriksa.Text);
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+
+                    if (rd.Read())
+                    {
+                        txtIDPasien.Text = rd["id_pasien"].ToString();
+                        txtHasilLab.Text = rd["hasil_lab"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data tidak ditemukan");
+                    }
+
+                    rd.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cari: " + ex.Message);
+            }
         }
     }
 }
