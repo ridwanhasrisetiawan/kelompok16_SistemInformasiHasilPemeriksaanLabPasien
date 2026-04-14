@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtUname = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -57,14 +57,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Sistem hasil Pemeriksaan Lab Pasien";
             // 
-            // label3
+            // txtUname
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(294, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Username";
+            this.txtUname.AutoSize = true;
+            this.txtUname.Location = new System.Drawing.Point(294, 146);
+            this.txtUname.Name = "txtUname";
+            this.txtUname.Size = new System.Drawing.Size(70, 16);
+            this.txtUname.TabIndex = 2;
+            this.txtUname.Text = "Username";
             // 
             // label4
             // 
@@ -119,6 +119,7 @@
             this.btnLogin.TabIndex = 9;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // Form1
             // 
@@ -131,7 +132,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtUname);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -146,7 +147,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label txtUname;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtUsername;
