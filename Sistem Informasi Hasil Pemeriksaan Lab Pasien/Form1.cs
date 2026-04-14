@@ -65,6 +65,27 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 }
 
                 reader.Close();
+
+                SqlCommand cmdDokter = new SqlCommand("SELECT * FROM DOKTER WHERE email=@email AND password=@pass", conn);
+                cmdDokter.Parameters.AddWithValue("@email", email);
+                cmdDokter.Parameters.AddWithValue("@pass", password);
+
+                reader = cmdDokter.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    MessageBox.Show("Login sebagai Dokter");
+
+                    FormDashboardDokter f = new FormDashboardDokter();
+                    f.Show();
+                    this.Hide();
+
+                    reader.Close();
+                    conn.Close();
+                    return;
+                }
+
+                reader.Close();
                 conn.Close();
 
                 MessageBox.Show("Login gagal!");
