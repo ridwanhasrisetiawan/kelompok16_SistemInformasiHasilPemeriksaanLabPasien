@@ -167,7 +167,14 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             TampilData();
             HitungData();
         }
-    
+        void ClearForm()
+        {
+            txtPeriksa.Clear();
+            txtId_Pasien.Clear();
+            txtId_Dokter.Clear();
+            txtHasilLab.Clear();
+        }
+
     }
     
 }
