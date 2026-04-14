@@ -35,7 +35,7 @@
             this.btnHAPUS = new System.Windows.Forms.Button();
             this.btnCLEAR = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnREFRESH = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnCARI = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -119,14 +119,15 @@
             this.button5.Text = "Tambah Pasien";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnREFRESH
             // 
-            this.button6.Location = new System.Drawing.Point(425, 264);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 23);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "REFRESH";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnREFRESH.Location = new System.Drawing.Point(425, 264);
+            this.btnREFRESH.Name = "btnREFRESH";
+            this.btnREFRESH.Size = new System.Drawing.Size(85, 23);
+            this.btnREFRESH.TabIndex = 7;
+            this.btnREFRESH.Text = "REFRESH";
+            this.btnREFRESH.UseVisualStyleBackColor = true;
+            this.btnREFRESH.Click += new System.EventHandler(this.btnREFRESH_Click);
             // 
             // button7
             // 
@@ -263,7 +264,7 @@
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnCARI);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.btnREFRESH);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnCLEAR);
             this.Controls.Add(this.btnHAPUS);
@@ -290,7 +291,7 @@
         private System.Windows.Forms.Button btnHAPUS;
         private System.Windows.Forms.Button btnCLEAR;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnREFRESH;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnCARI;
         private System.Windows.Forms.Label lblStatus;

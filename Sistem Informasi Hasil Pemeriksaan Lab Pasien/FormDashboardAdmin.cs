@@ -161,6 +161,13 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
             ClearForm();
         }
+
+        private void btnREFRESH_Click(object sender, EventArgs e)
+        {
+            TampilData();
+            HitungData();
+        }
+    
     }
-    }
+    
 }
