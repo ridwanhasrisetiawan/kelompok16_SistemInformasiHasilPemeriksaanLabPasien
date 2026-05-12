@@ -24,6 +24,14 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
             frm.Show();
         }
+
+        private void btnDataDokter_Click(object sender, EventArgs e)
+        {
+            FormDokter frm =
+                new FormDokter();
+
+            frm.Show();
+        }
     }
     }
 }

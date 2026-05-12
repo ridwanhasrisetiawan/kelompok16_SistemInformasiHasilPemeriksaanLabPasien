@@ -63,6 +63,7 @@
             this.btnDataDokter.TabIndex = 2;
             this.btnDataDokter.Text = "Data Dokter";
             this.btnDataDokter.UseVisualStyleBackColor = true;
+            this.btnDataDokter.Click += new System.EventHandler(this.btnDataDokter_Click);
             // 
             // btnPemeriksaan
             // 
