@@ -83,6 +83,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormPasien";
             this.Text = "FormPasien";
+            this.Load += new System.EventHandler(this.FormPasien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHasil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
