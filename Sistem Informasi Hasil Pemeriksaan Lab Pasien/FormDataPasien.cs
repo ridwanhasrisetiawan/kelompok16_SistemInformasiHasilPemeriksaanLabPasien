@@ -83,7 +83,13 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void FormDataPasien_Load(object sender, EventArgs e)
         {
+            TampilData();
+            HitungTotal();
 
+            cmbJK.Items.Add("Laki-Laki");
+            cmbJK.Items.Add("Perempuan");
+
+            txtId.Visible = false;
         }
     }
 }
