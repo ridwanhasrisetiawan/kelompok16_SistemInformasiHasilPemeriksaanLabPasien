@@ -48,5 +48,22 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
             dgvPemeriksaan.DataSource = dt;
         }
+
+        void TampilDokter()
+        {
+            SqlDataAdapter da =
+        new SqlDataAdapter(
+        "sp_TampilDokter",
+        conn);
+
+            da.SelectCommand.CommandType =
+                CommandType.StoredProcedure;
+
+            DataTable dt =
+                new DataTable();
+
+            da.Fill(dt);
+
+        }
     }
 }
