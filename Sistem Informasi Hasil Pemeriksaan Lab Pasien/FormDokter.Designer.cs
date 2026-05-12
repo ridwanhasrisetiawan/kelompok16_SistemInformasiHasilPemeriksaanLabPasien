@@ -48,7 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.txtNamaDokter = new System.Windows.Forms.TextBox();
             this.txtSpesialis = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -233,13 +233,13 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "DATA DOKTER";
             // 
-            // txtID
+            // txtId
             // 
-            this.txtID.Location = new System.Drawing.Point(101, 60);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 22);
-            this.txtID.TabIndex = 7;
-            this.txtID.Visible = false;
+            this.txtId.Location = new System.Drawing.Point(101, 60);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 22);
+            this.txtId.TabIndex = 7;
+            this.txtId.Visible = false;
             // 
             // txtNamaDokter
             // 
@@ -294,6 +294,7 @@
             this.btnUpdate.TabIndex = 14;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -338,7 +339,7 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtSpesialis);
             this.Controls.Add(this.txtNamaDokter);
-            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -377,7 +378,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNamaDokter;
         private System.Windows.Forms.TextBox txtSpesialis;
         private System.Windows.Forms.TextBox txtEmail;
