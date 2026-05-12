@@ -91,5 +91,72 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
             txtId.Visible = false;
         }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlCommand cmd =
+                    new SqlCommand(
+                        "sp_tambah_pasien",
+                        conn);
+
+                cmd.CommandType =
+                    CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue(
+                    "@nama_pasien",
+                    txtNamaPasien.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@jenis_kelamin",
+                    cmbJK.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@tanggal_lahir",
+                    dtTanggal.Value);
+
+                cmd.Parameters.AddWithValue(
+                    "@alamat",
+                    txtAlamat.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@no_telp",
+                    txtNoTelp.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@email",
+                    txtUsername.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@password_pasien",
+                    txtPassword.Text);
+
+                conn.Open();
+
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                MessageBox.Show(
+                    "Data Pasien Berhasil Ditambah");
+
+                TampilData();
+                HitungTotal();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error : " + ex.Message);
+
+                conn.Close();
+            }
+        }
+
+        private void txtNamaPasien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

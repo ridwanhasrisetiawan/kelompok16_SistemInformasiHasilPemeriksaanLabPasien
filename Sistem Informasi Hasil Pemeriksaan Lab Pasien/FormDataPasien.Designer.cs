@@ -56,7 +56,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtNamaPasien = new System.Windows.Forms.TextBox();
             this.txtAlamat = new System.Windows.Forms.TextBox();
-            this.txtNotelp = new System.Windows.Forms.TextBox();
+            this.txtNoTelp = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -297,6 +297,7 @@
             this.txtNamaPasien.Name = "txtNamaPasien";
             this.txtNamaPasien.Size = new System.Drawing.Size(171, 22);
             this.txtNamaPasien.TabIndex = 13;
+            this.txtNamaPasien.TextChanged += new System.EventHandler(this.txtNamaPasien_TextChanged);
             // 
             // txtAlamat
             // 
@@ -306,12 +307,12 @@
             this.txtAlamat.Size = new System.Drawing.Size(171, 41);
             this.txtAlamat.TabIndex = 14;
             // 
-            // txtNotelp
+            // txtNoTelp
             // 
-            this.txtNotelp.Location = new System.Drawing.Point(111, 299);
-            this.txtNotelp.Name = "txtNotelp";
-            this.txtNotelp.Size = new System.Drawing.Size(171, 22);
-            this.txtNotelp.TabIndex = 15;
+            this.txtNoTelp.Location = new System.Drawing.Point(111, 299);
+            this.txtNoTelp.Name = "txtNoTelp";
+            this.txtNoTelp.Size = new System.Drawing.Size(171, 22);
+            this.txtNoTelp.TabIndex = 15;
             // 
             // txtUsername
             // 
@@ -362,6 +363,7 @@
             this.btnInsert.TabIndex = 21;
             this.btnInsert.Text = "INSERT";
             this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnUpdate
             // 
@@ -404,7 +406,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.txtNotelp);
+            this.Controls.Add(this.txtNoTelp);
             this.Controls.Add(this.txtAlamat);
             this.Controls.Add(this.txtNamaPasien);
             this.Controls.Add(this.label7);
@@ -460,7 +462,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtNamaPasien;
         private System.Windows.Forms.TextBox txtAlamat;
-        private System.Windows.Forms.TextBox txtNotelp;
+        private System.Windows.Forms.TextBox txtNoTelp;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label8;
