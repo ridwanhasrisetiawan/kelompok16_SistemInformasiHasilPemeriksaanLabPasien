@@ -135,5 +135,41 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 conn.Close();
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd =
+                    new SqlCommand(
+                    "sp_DeleteDokter", conn);
+
+                cmd.CommandType =
+                    CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue(
+                    "@id",
+                    txtId.Text);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(
+                    "Data Berhasil Dihapus");
+
+                conn.Close();
+
+                TampilData();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error : " + ex.Message);
+
+                conn.Close();
+            }
+        }
     }
 }
