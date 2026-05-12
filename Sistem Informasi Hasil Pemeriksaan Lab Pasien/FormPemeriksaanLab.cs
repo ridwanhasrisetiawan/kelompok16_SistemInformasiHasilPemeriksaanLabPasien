@@ -21,7 +21,67 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                conn.Open();
 
+                SqlCommand cmd =
+                    new SqlCommand(
+                    "sp_UpdatePemeriksaanLab",
+                    conn);
+
+                cmd.CommandType =
+                    CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue(
+                    "@id",
+                    txtId.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@pasien",
+                    txtPasien.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@dokter",
+                    txtDokter.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@admin",
+                    txtAdmin.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@jenis",
+                    txtJenisTes.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@hasil",
+                    txtHasilLab.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@normal",
+                    txtNilaiNormal.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@diagnosa",
+                    txtDiagnosa.Text);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(
+                    "Data Berhasil Diupdate");
+
+                conn.Close();
+
+                TampilData();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error : " + ex.Message);
+
+                conn.Close();
+            }
         }
 
         private void FormPemeriksaanLab_Load(object sender, EventArgs e)
