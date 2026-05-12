@@ -83,6 +83,7 @@
             this.btnHasilLab.TabIndex = 4;
             this.btnHasilLab.Text = "Hasil Lab";
             this.btnHasilLab.UseVisualStyleBackColor = true;
+            this.btnHasilLab.Click += new System.EventHandler(this.btnHasilLab_Click);
             // 
             // btnLogout
             // 
