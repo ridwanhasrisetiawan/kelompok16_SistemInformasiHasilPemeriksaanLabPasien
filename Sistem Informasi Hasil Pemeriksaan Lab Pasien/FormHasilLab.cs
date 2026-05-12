@@ -36,7 +36,12 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            
+            TampilData();
+        }
+
+        private void FormHasilLab_Load(object sender, EventArgs e)
+        {
+            TampilData();
         }
     }
 }

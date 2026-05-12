@@ -73,6 +73,7 @@
             this.Controls.Add(this.btnView);
             this.Name = "FormHasilLab";
             this.Text = "FormHasilLab";
+            this.Load += new System.EventHandler(this.FormHasilLab_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHasilLab)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
