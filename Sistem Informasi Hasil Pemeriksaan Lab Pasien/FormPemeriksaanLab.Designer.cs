@@ -344,6 +344,7 @@
             this.dgvPemeriksaan.RowTemplate.Height = 24;
             this.dgvPemeriksaan.Size = new System.Drawing.Size(438, 225);
             this.dgvPemeriksaan.TabIndex = 18;
+            this.dgvPemeriksaan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPemeriksaan_CellContentClick);
             // 
             // btnInsert
             // 

@@ -240,5 +240,45 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 conn.Close();
             }
         }
+
+        private void dgvPemeriksaan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int i = e.RowIndex;
+
+                txtId.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[0].Value.ToString();
+
+                txtPasien.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[1].Value.ToString();
+
+                txtDokter.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[2].Value.ToString();
+
+                txtAdmin.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[3].Value.ToString();
+
+                txtJenisTes.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[4].Value.ToString();
+
+                txtHasilLab.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[5].Value.ToString();
+
+                txtNilaiNormal.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[6].Value.ToString();
+
+                txtDiagnosa.Text =
+                    dgvPemeriksaan.Rows[i]
+                    .Cells[7].Value.ToString();
+            }
+        }
     }
 }
