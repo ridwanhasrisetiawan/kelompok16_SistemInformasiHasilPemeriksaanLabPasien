@@ -64,9 +64,14 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.hasilPemeriksaanLabDBDataSet2 = new Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien.HasilPemeriksaanLabDBDataSet2();
+            this.pEMERIKSAANLABBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pEMERIKSAAN_LABTableAdapter = new Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien.HasilPemeriksaanLabDBDataSet2TableAdapters.PEMERIKSAAN_LABTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPemeriksaan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hasilPemeriksaanLabDBDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pEMERIKSAANLABBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigator1
@@ -249,6 +254,7 @@
             // 
             // txtId
             // 
+            this.txtId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "id_periksa", true));
             this.txtId.Location = new System.Drawing.Point(124, 51);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 22);
@@ -256,6 +262,7 @@
             // 
             // txtAdmin
             // 
+            this.txtAdmin.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "id_admin", true));
             this.txtAdmin.Location = new System.Drawing.Point(124, 97);
             this.txtAdmin.Name = "txtAdmin";
             this.txtAdmin.Size = new System.Drawing.Size(100, 22);
@@ -263,6 +270,7 @@
             // 
             // txtDokter
             // 
+            this.txtDokter.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "id_dokter", true));
             this.txtDokter.Location = new System.Drawing.Point(124, 139);
             this.txtDokter.Name = "txtDokter";
             this.txtDokter.Size = new System.Drawing.Size(100, 22);
@@ -270,6 +278,7 @@
             // 
             // txtPasien
             // 
+            this.txtPasien.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "id_pasien", true));
             this.txtPasien.Location = new System.Drawing.Point(124, 184);
             this.txtPasien.Name = "txtPasien";
             this.txtPasien.Size = new System.Drawing.Size(154, 22);
@@ -277,6 +286,7 @@
             // 
             // txtJenisTes
             // 
+            this.txtJenisTes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "jenis_tes", true));
             this.txtJenisTes.Location = new System.Drawing.Point(124, 231);
             this.txtJenisTes.Name = "txtJenisTes";
             this.txtJenisTes.Size = new System.Drawing.Size(154, 22);
@@ -284,6 +294,7 @@
             // 
             // txtHasilLab
             // 
+            this.txtHasilLab.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "hasil_lab", true));
             this.txtHasilLab.Location = new System.Drawing.Point(124, 275);
             this.txtHasilLab.Name = "txtHasilLab";
             this.txtHasilLab.Size = new System.Drawing.Size(154, 22);
@@ -291,6 +302,7 @@
             // 
             // txtNilaiNormal
             // 
+            this.txtNilaiNormal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "nilai_normal", true));
             this.txtNilaiNormal.Location = new System.Drawing.Point(124, 321);
             this.txtNilaiNormal.Name = "txtNilaiNormal";
             this.txtNilaiNormal.Size = new System.Drawing.Size(100, 22);
@@ -298,6 +310,7 @@
             // 
             // txtDiagnosa
             // 
+            this.txtDiagnosa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEMERIKSAANLABBindingSource, "diagnosa", true));
             this.txtDiagnosa.Location = new System.Drawing.Point(124, 371);
             this.txtDiagnosa.Name = "txtDiagnosa";
             this.txtDiagnosa.Size = new System.Drawing.Size(100, 22);
@@ -320,6 +333,7 @@
             this.btnUpdate.TabIndex = 17;
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // dgvPemeriksaan
             // 
@@ -367,6 +381,20 @@
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = true;
             // 
+            // hasilPemeriksaanLabDBDataSet2
+            // 
+            this.hasilPemeriksaanLabDBDataSet2.DataSetName = "HasilPemeriksaanLabDBDataSet2";
+            this.hasilPemeriksaanLabDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pEMERIKSAANLABBindingSource
+            // 
+            this.pEMERIKSAANLABBindingSource.DataMember = "PEMERIKSAAN_LAB";
+            this.pEMERIKSAANLABBindingSource.DataSource = this.hasilPemeriksaanLabDBDataSet2;
+            // 
+            // pEMERIKSAAN_LABTableAdapter
+            // 
+            this.pEMERIKSAAN_LABTableAdapter.ClearBeforeFill = true;
+            // 
             // FormPemeriksaanLab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -397,10 +425,13 @@
             this.Controls.Add(this.bindingNavigator1);
             this.Name = "FormPemeriksaanLab";
             this.Text = "FormPemeriksaanLab";
+            this.Load += new System.EventHandler(this.FormPemeriksaanLab_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPemeriksaan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hasilPemeriksaanLabDBDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pEMERIKSAANLABBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,5 +473,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnLogout;
+        private HasilPemeriksaanLabDBDataSet2 hasilPemeriksaanLabDBDataSet2;
+        private System.Windows.Forms.BindingSource pEMERIKSAANLABBindingSource;
+        private HasilPemeriksaanLabDBDataSet2TableAdapters.PEMERIKSAAN_LABTableAdapter pEMERIKSAAN_LABTableAdapter;
     }
 }
