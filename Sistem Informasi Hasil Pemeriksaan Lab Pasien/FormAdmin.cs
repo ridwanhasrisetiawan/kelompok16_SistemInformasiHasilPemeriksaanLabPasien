@@ -32,6 +32,14 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
             frm.Show();
         }
+
+        private void btnPemeriksaan_Click(object sender, EventArgs e)
+        {
+            FormPemeriksaanLab frm =
+                new FormPemeriksaanLab();
+
+            frm.Show();
+        }
     }
     }
 }

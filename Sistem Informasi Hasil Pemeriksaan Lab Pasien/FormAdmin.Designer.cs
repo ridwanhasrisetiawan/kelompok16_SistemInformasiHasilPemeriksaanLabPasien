@@ -73,6 +73,7 @@
             this.btnPemeriksaan.TabIndex = 3;
             this.btnPemeriksaan.Text = "Pemeriksaan Lab";
             this.btnPemeriksaan.UseVisualStyleBackColor = true;
+            this.btnPemeriksaan.Click += new System.EventHandler(this.btnPemeriksaan_Click);
             // 
             // btnHasilLab
             // 
