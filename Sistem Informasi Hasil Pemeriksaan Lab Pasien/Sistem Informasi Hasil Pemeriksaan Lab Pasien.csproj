@@ -93,6 +93,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HasilPemeriksaanLabDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="HasilPemeriksaanLabDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HasilPemeriksaanLabDBDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -135,6 +140,17 @@
     </None>
     <None Include="HasilPemeriksaanLabDBDataSet.xss">
       <DependentUpon>HasilPemeriksaanLabDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="HasilPemeriksaanLabDBDataSet1.xsc">
+      <DependentUpon>HasilPemeriksaanLabDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="HasilPemeriksaanLabDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HasilPemeriksaanLabDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HasilPemeriksaanLabDBDataSet1.xss">
+      <DependentUpon>HasilPemeriksaanLabDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

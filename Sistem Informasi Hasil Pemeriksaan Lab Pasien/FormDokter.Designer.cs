@@ -59,14 +59,21 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.dgvDokter = new System.Windows.Forms.DataGridView();
+            this.hasilPemeriksaanLabDBDataSet1 = new Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien.HasilPemeriksaanLabDBDataSet1();
+            this.dOKTERBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dOKTERTableAdapter = new Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien.HasilPemeriksaanLabDBDataSet1TableAdapters.DOKTERTableAdapter();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDokter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hasilPemeriksaanLabDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dOKTERBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.BindingSource = this.dOKTERBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
             this.bindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -81,7 +88,8 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
+            this.bindingNavigatorDeleteItem,
+            this.toolStripButton1});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -92,6 +100,7 @@
             this.bindingNavigator1.Size = new System.Drawing.Size(800, 27);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            this.bindingNavigator1.RefreshItems += new System.EventHandler(this.bindingNavigator1_RefreshItems);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -235,6 +244,7 @@
             // 
             // txtId
             // 
+            this.txtId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dOKTERBindingSource, "id_dokter", true));
             this.txtId.Location = new System.Drawing.Point(101, 60);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 22);
@@ -243,6 +253,7 @@
             // 
             // txtNamaDokter
             // 
+            this.txtNamaDokter.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dOKTERBindingSource, "nama_dokter", true));
             this.txtNamaDokter.Location = new System.Drawing.Point(101, 97);
             this.txtNamaDokter.Name = "txtNamaDokter";
             this.txtNamaDokter.Size = new System.Drawing.Size(183, 22);
@@ -250,6 +261,7 @@
             // 
             // txtSpesialis
             // 
+            this.txtSpesialis.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dOKTERBindingSource, "spesialis", true));
             this.txtSpesialis.Location = new System.Drawing.Point(101, 136);
             this.txtSpesialis.Name = "txtSpesialis";
             this.txtSpesialis.Size = new System.Drawing.Size(100, 22);
@@ -257,6 +269,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dOKTERBindingSource, "email", true));
             this.txtEmail.Location = new System.Drawing.Point(101, 195);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(183, 22);
@@ -264,6 +277,7 @@
             // 
             // txtUsername
             // 
+            this.txtUsername.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dOKTERBindingSource, "email", true));
             this.txtUsername.Location = new System.Drawing.Point(101, 251);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(100, 22);
@@ -271,6 +285,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dOKTERBindingSource, "password_dokter", true));
             this.txtPassword.Location = new System.Drawing.Point(101, 313);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(100, 22);
@@ -314,6 +329,7 @@
             this.btnView.TabIndex = 16;
             this.btnView.Text = "VIEW";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // dgvDokter
             // 
@@ -325,6 +341,29 @@
             this.dgvDokter.Size = new System.Drawing.Size(441, 150);
             this.dgvDokter.TabIndex = 17;
             this.dgvDokter.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDokter_CellContentClick);
+            // 
+            // hasilPemeriksaanLabDBDataSet1
+            // 
+            this.hasilPemeriksaanLabDBDataSet1.DataSetName = "HasilPemeriksaanLabDBDataSet1";
+            this.hasilPemeriksaanLabDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dOKTERBindingSource
+            // 
+            this.dOKTERBindingSource.DataMember = "DOKTER";
+            this.dOKTERBindingSource.DataSource = this.hasilPemeriksaanLabDBDataSet1;
+            // 
+            // dOKTERTableAdapter
+            // 
+            this.dOKTERTableAdapter.ClearBeforeFill = true;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // FormDokter
             // 
@@ -351,10 +390,13 @@
             this.Controls.Add(this.bindingNavigator1);
             this.Name = "FormDokter";
             this.Text = "FormDokter";
+            this.Load += new System.EventHandler(this.FormDokter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDokter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hasilPemeriksaanLabDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dOKTERBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,5 +433,9 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.DataGridView dgvDokter;
+        private HasilPemeriksaanLabDBDataSet1 hasilPemeriksaanLabDBDataSet1;
+        private System.Windows.Forms.BindingSource dOKTERBindingSource;
+        private HasilPemeriksaanLabDBDataSet1TableAdapters.DOKTERTableAdapter dOKTERTableAdapter;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

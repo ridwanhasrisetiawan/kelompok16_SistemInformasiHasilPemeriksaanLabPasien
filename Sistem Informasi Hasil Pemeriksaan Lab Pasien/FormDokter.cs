@@ -199,5 +199,22 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                     .Cells[4].Value.ToString();
             }
         }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            TampilData();
+        }
+
+        private void FormDokter_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'hasilPemeriksaanLabDBDataSet1.DOKTER' table. You can move, or remove it, as needed.
+            this.dOKTERTableAdapter.Fill(this.hasilPemeriksaanLabDBDataSet1.DOKTER);
+            TampilData();
+        }
+
+        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
     }
 }
