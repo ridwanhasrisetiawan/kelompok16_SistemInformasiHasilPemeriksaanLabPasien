@@ -351,5 +351,51 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 conn.Close();
             }
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+
+                string query = @"
+
+                        UPDATE PASIEN
+                        SET nama_pasien = b.nama_pasien,
+                            jenis_kelamin = b.jenis_kelamin,
+                            tanggal_lahir = b.tanggal_lahir,
+                            alamat = b.alamat,
+                            no_telp = b.no_telp,
+                            email = b.email,
+                            password_pasien = b.password_pasien
+
+                        FROM PASIEN p
+                        INNER JOIN PASIEN_BACKUP b
+                        ON p.id_pasien = b.id_pasien
+
+                        ";
+
+                SqlCommand cmd =
+                    new SqlCommand(query, conn);
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(
+                    "Data berhasil direstore");
+
+                conn.Close();
+
+                TampilData();
+                HitungTotal();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Reset gagal : " + ex.Message);
+
+                conn.Close();
+            }
+        }
     }
 }
