@@ -65,5 +65,22 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             da.Fill(dt);
 
         }
+
+        void TampilAdmin()
+        {
+            SqlDataAdapter da =
+         new SqlDataAdapter(
+         "sp_TampilAdmin",
+         conn);
+
+            da.SelectCommand.CommandType =
+                CommandType.StoredProcedure;
+
+            DataTable dt =
+                new DataTable();
+
+            da.Fill(dt);
+
+        }
     }
 }
