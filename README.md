@@ -22,6 +22,8 @@ Tes Injection (Serangan)
 Klik tombol "Tes Injection". Skenarionya, sistem yang belum aman akan terkena manipulasi query. Hasilnya, nama pasien di tabel akan berubah drastis menjadi "HACKED".
 <img width="1920" height="1200" alt="Screenshot 2026-05-12 175905" src="https://github.com/user-attachments/assets/8e1c6344-2b8c-4c64-a6e3-9b1adaa1fcbd" />
 
-11.<img width="1920" height="1200" alt="Screenshot 2026-05-12 175917" src="https://github.com/user-attachments/assets/9ed41e7e-d719-4fb2-85ba-941c04b2f191" />
+11.Reset (Pemulihan)
+Untuk mengembalikan data, klik tombol "Reset". Muncul notifikasi kalau data berhasil di-restore, dan nama pasien akan balik lagi ke semula secara otomatis.
+<img width="1920" height="1200" alt="Screenshot 2026-05-12 175917" src="https://github.com/user-attachments/assets/9ed41e7e-d719-4fb2-85ba-941c04b2f191" />
 
 
