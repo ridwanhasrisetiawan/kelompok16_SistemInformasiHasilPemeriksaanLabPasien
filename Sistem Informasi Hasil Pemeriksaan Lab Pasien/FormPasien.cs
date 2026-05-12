@@ -69,5 +69,15 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
             TampilData();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 frm =
+                new Form1();
+
+            frm.Show();
+
+            this.Hide();
+        }
     }
 }
