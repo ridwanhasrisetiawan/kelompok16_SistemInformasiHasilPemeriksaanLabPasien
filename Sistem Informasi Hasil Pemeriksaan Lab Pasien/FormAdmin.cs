@@ -59,5 +59,4 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             this.Hide();
         }
     }
-    }
 }

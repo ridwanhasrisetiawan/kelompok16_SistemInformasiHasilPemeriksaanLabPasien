@@ -422,6 +422,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormDataPasien";
             this.Text = "FormDataPasien";
+            this.Load += new System.EventHandler(this.FormDataPasien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
