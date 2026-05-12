@@ -40,6 +40,47 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             dgvPasien.DataSource = dt;
         }
 
+        void HitungTotal()
+        {
+            try
+            {
+                SqlCommand cmd =
+                    new SqlCommand(
+                        "sp_count_pasien",
+                        conn);
+
+                cmd.CommandType =
+                    CommandType.StoredProcedure;
+
+                SqlParameter total =
+                    new SqlParameter();
+
+                total.ParameterName = "@total";
+                total.SqlDbType = SqlDbType.Int;
+                total.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(total);
+
+                conn.Open();
+
+                cmd.ExecuteNonQuery();
+
+                lblTotal.Text =
+                    "Total Pasien : " +
+                    total.Value.ToString();
+
+                conn.Close();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error : " + ex.Message);
+
+                conn.Close();
+            }
+        }
+
         private void FormDataPasien_Load(object sender, EventArgs e)
         {
 
