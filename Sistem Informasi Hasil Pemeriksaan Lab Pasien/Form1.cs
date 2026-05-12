@@ -11,19 +11,12 @@ using System.Windows.Forms;
 
 namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 {
-    public partial class Form1 : Form
+    public partial class Form1: Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=LAPTOP-4VAVDOFH\\WAWANLOMBOK;Initial Catalog=LayananKesehatanDB;Integrated Security=True");
+        SqlConnection conn = new SqlConnection("Data Source=LAPTOP-4VAVDOFH\\WAWANLOMBOK;Initial Catalog=HasilPemeriksaanLabDB;Integrated Security=True");
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            cmbRole.Items.Add("admin");
-            cmbRole.Items.Add("dokter");
-            cmbRole.Items.Add("pasien");
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
@@ -33,89 +26,121 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtUname.Text;
-            string password = txtPassword.Text;
-
-            if (email == "" || password == "")
-            {
-                MessageBox.Show("Isi semua field!");
-                return;
-            }
-
             try
             {
+                if (txtUsername.Text == "")
+                {
+                    MessageBox.Show(
+                        "Username tidak boleh kosong");
+
+                    txtUsername.Focus();
+
+                    return;
+                }
+
+                if (txtPassword.Text == "")
+                {
+                    MessageBox.Show(
+                        "Password tidak boleh kosong");
+
+                    txtPassword.Focus();
+
+                    return;
+                }
+
+
+                if (txtPassword.Text.Length < 6)
+                {
+                    MessageBox.Show(
+                        "Password minimal 6 karakter");
+
+                    txtPassword.Focus();
+
+                    return;
+                }
+
                 conn.Open();
-                SqlCommand cmdAdmin = new SqlCommand("SELECT * FROM ADMIN WHERE email=@email AND password=@pass", conn);
-                cmdAdmin.Parameters.AddWithValue("@email", email);
-                cmdAdmin.Parameters.AddWithValue("@pass", password);
 
-                SqlDataReader reader = cmdAdmin.ExecuteReader();
+                string query =
+                "SELECT * FROM AKUN " +
+                "WHERE username=@username " +
+                "AND password_akun=@password";
 
-                if (reader.Read())
+                SqlCommand cmd =
+                    new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue(
+                    "@username",
+                    txtUsername.Text.Trim());
+
+                cmd.Parameters.AddWithValue(
+                    "@password",
+                    txtPassword.Text.Trim());
+
+                SqlDataReader rd =
+                    cmd.ExecuteReader();
+
+                if (rd.Read())
                 {
-                    MessageBox.Show("Login sebagai Admin");
+                    string role =
+                        rd["role"].ToString();
 
-                    FormDashboardAdmin f = new FormDashboardAdmin();
-                    f.Show();
-                    this.Hide();
+                    MessageBox.Show(
+                        "Login Berhasil");
 
-                    reader.Close();
-                    conn.Close();
-                    return;
+                    if (role == "Admin")
+                    {
+                        FormAdmin frm =
+                            new FormAdmin();
+
+                        frm.Show();
+
+                        this.Hide();
+                    }
+
+                    else if (role == "Dokter")
+                    {
+                        FormPemeriksaanLab frm =
+                            new FormPemeriksaanLab();
+
+                        frm.Show();
+
+                        this.Hide();
+                    }
+
+                    else if (role == "Pasien")
+                    {
+                        FormPasien frm =
+                            new FormPasien();
+
+                        frm.namaPasien =
+                            rd["username"].ToString();
+
+                        frm.idPasien =
+                            rd["id_user_asli"].ToString();
+
+                        frm.Show();
+
+                        this.Hide();
+                    }
                 }
 
-                reader.Close();
-
-                SqlCommand cmdDokter = new SqlCommand("SELECT * FROM DOKTER WHERE email=@email AND password=@pass", conn);
-                cmdDokter.Parameters.AddWithValue("@email", email);
-                cmdDokter.Parameters.AddWithValue("@pass", password);
-
-                reader = cmdDokter.ExecuteReader();
-
-                if (reader.Read())
+                else
                 {
-                    MessageBox.Show("Login sebagai Dokter");
-
-                    FormDashboardDokter f = new FormDashboardDokter();
-                    f.Show();
-                    this.Hide();
-
-                    reader.Close();
-                    conn.Close();
-                    return;
+                    MessageBox.Show(
+                        "Username atau Password Salah");
                 }
 
-                reader.Close();
-
-                SqlCommand cmdPasien = new SqlCommand("SELECT * FROM PASIEN WHERE email=@email AND password=@pass", conn);
-                cmdPasien.Parameters.AddWithValue("@email", email);
-                cmdPasien.Parameters.AddWithValue("@pass", password);
-
-                reader = cmdPasien.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    MessageBox.Show("Login sebagai Pasien");
-
-                    FormDashboardPasien f = new FormDashboardPasien();
-                    f.Show();
-                    this.Hide();
-
-                    reader.Close();
-                    conn.Close();
-                    return;
-                }
-
-                reader.Close();
                 conn.Close();
 
-                MessageBox.Show("Login gagal!");
             }
+
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show(ex.Message);
+
+                conn.Close();
             }
         }
     }
-   
 }

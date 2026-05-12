@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 {
-    public partial class FormDashboardPasien: Form
+    public partial class FormDokter: Form
     {
-        public FormDashboardPasien()
+        public FormDokter()
         {
             InitializeComponent();
         }
