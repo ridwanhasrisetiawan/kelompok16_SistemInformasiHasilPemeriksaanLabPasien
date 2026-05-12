@@ -53,6 +53,7 @@
             this.btnDataPasien.TabIndex = 1;
             this.btnDataPasien.Text = "Data Pasien";
             this.btnDataPasien.UseVisualStyleBackColor = true;
+            this.btnDataPasien.Click += new System.EventHandler(this.btnDataPasien_Click);
             // 
             // btnDataDokter
             // 

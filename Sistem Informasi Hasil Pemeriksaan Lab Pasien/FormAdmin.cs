@@ -16,5 +16,14 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
             InitializeComponent();
         }
+
+        private void btnDataPasien_Click(object sender, EventArgs e)
+        {
+            FormDataPasien frm =
+                new FormDataPasien();
+
+            frm.Show();
+        }
+    }
     }
 }
