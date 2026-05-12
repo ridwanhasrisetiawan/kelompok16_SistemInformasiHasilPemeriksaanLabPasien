@@ -280,5 +280,20 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                     .Cells[7].Value.ToString();
             }
         }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            TampilData();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Form1 frm =
+                 new Form1();
+
+            frm.Show();
+
+            this.Hide();
+        }
     }
 }

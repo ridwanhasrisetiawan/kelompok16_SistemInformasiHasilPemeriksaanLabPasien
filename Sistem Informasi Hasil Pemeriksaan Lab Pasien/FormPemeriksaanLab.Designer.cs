@@ -374,6 +374,7 @@
             this.btnView.TabIndex = 21;
             this.btnView.Text = "VIEW";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnLogout
             // 
@@ -383,6 +384,7 @@
             this.btnLogout.TabIndex = 22;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // hasilPemeriksaanLabDBDataSet2
             // 
