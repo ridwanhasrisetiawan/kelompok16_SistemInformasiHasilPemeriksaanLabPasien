@@ -171,5 +171,33 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 conn.Close();
             }
         }
+
+        private void dgvDokter_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int i = e.RowIndex;
+
+                txtId.Text =
+                    dgvDokter.Rows[i]
+                    .Cells[0].Value.ToString();
+
+                txtNamaDokter.Text =
+                    dgvDokter.Rows[i]
+                    .Cells[1].Value.ToString();
+
+                txtSpesialis.Text =
+                    dgvDokter.Rows[i]
+                    .Cells[2].Value.ToString();
+
+                txtEmail.Text =
+                    dgvDokter.Rows[i]
+                    .Cells[3].Value.ToString();
+
+                txtPassword.Text =
+                    dgvDokter.Rows[i]
+                    .Cells[4].Value.ToString();
+            }
+        }
     }
 }

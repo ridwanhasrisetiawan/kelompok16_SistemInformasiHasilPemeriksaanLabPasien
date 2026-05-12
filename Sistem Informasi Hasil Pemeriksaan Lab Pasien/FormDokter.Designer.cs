@@ -324,6 +324,7 @@
             this.dgvDokter.RowTemplate.Height = 24;
             this.dgvDokter.Size = new System.Drawing.Size(441, 150);
             this.dgvDokter.TabIndex = 17;
+            this.dgvDokter.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDokter_CellContentClick);
             // 
             // FormDokter
             // 
