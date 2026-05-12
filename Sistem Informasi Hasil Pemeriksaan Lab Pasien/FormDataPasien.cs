@@ -83,6 +83,8 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
         private void FormDataPasien_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'hasilPemeriksaanLabDBDataSet.PASIEN' table. You can move, or remove it, as needed.
+            this.pASIENTableAdapter.Fill(this.hasilPemeriksaanLabDBDataSet.PASIEN);
             TampilData();
             HitungTotal();
 
@@ -305,6 +307,48 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 txtPassword.Text =
                     dgvPasien.Rows[i]
                     .Cells[7].Value.ToString();
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTesInjection_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+
+                string query =
+                "UPDATE PASIEN " +
+                "SET nama_pasien='HACKED' " +
+                "WHERE nama_pasien='" +
+                txtNamaPasien.Text + "'";
+
+                MessageBox.Show(query);
+
+                SqlCommand cmd =
+                    new SqlCommand(query, conn);
+
+                int result =
+                    cmd.ExecuteNonQuery();
+
+                MessageBox.Show(
+                    result + " data berhasil dihack");
+
+                conn.Close();
+
+                TampilData();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error : " + ex.Message);
+
+                conn.Close();
             }
         }
     }
