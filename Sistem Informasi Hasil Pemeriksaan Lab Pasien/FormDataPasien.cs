@@ -158,5 +158,70 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
 
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlCommand cmd =
+                    new SqlCommand(
+                        "sp_update_pasien",
+                        conn);
+
+                cmd.CommandType =
+                    CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue(
+                    "@id_pasien",
+                    txtId.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@nama_pasien",
+                    txtNamaPasien.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@jenis_kelamin",
+                    cmbJK.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@tanggal_lahir",
+                    dtTanggal.Value);
+
+                cmd.Parameters.AddWithValue(
+                    "@alamat",
+                    txtAlamat.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@no_telp",
+                    txtNoTelp.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@email",
+                    txtUsername.Text);
+
+                cmd.Parameters.AddWithValue(
+                    "@password_pasien",
+                    txtPassword.Text);
+
+                conn.Open();
+
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+                MessageBox.Show(
+                    "Data Berhasil Diupdate");
+
+                TampilData();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error : " + ex.Message);
+
+                conn.Close();
+            }
+        }
     }
 }
