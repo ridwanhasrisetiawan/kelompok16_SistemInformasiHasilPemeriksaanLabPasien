@@ -261,5 +261,51 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
                 conn.Close();
             }
         }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            TampilData();
+            HitungTotal();
+        }
+
+        private void dgvPasien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int i = e.RowIndex;
+
+                txtId.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[0].Value.ToString();
+
+                txtNamaPasien.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[1].Value.ToString();
+
+                cmbJK.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[2].Value.ToString();
+
+                dtTanggal.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[3].Value.ToString();
+
+                txtAlamat.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[4].Value.ToString();
+
+                txtNoTelp.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[5].Value.ToString();
+
+                txtUsername.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[6].Value.ToString();
+
+                txtPassword.Text =
+                    dgvPasien.Rows[i]
+                    .Cells[7].Value.ToString();
+            }
+        }
     }
 }

@@ -212,6 +212,7 @@
             this.dgvPasien.RowTemplate.Height = 24;
             this.dgvPasien.Size = new System.Drawing.Size(384, 150);
             this.dgvPasien.TabIndex = 3;
+            this.dgvPasien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPasien_CellContentClick);
             // 
             // cmbJK
             // 
@@ -393,6 +394,7 @@
             this.btnView.TabIndex = 24;
             this.btnView.Text = "VIEW";
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // FormDataPasien
             // 
