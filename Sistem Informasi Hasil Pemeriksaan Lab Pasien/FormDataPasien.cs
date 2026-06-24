@@ -1,266 +1,218 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.OleDb;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 {
-    public partial class FormDataPasien: Form
+    public partial class FormDataPasien : Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=LAPTOP-4VAVDOFH\\WAWANLOMBOK;Initial Catalog=HasilPemeriksaanLabDB;Integrated Security=True");
+        DAL dbLogic = new DAL();
+
         public FormDataPasien()
         {
             InitializeComponent();
         }
 
+        private void FormDataPasien_Load(object sender, EventArgs e)
+        {
+            TampilData();
+            HitungTotal();
+
+            cmbJK.Items.Clear();
+            cmbJK.Items.Add("Laki-Laki");
+            cmbJK.Items.Add("Perempuan");
+
+            txtId.Visible = false;
+
+            dgvPasien.CellClick += dgvPasien_CellClick;
+        }
+
         void TampilData()
         {
-            SqlCommand cmd =
-        new SqlCommand(
-            "sp_tampil_pasien",
-            conn);
-
-            cmd.CommandType =
-                CommandType.StoredProcedure;
-
-            SqlDataAdapter da =
-                new SqlDataAdapter(cmd);
-
-            DataTable dt =
-                new DataTable();
-
-            da.Fill(dt);
-
-            dgvPasien.DataSource = dt;
+            try
+            {
+                dgvPasien.DataSource = dbLogic.TampilPasien();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal load data : " + ex.Message);
+            }
         }
 
         void HitungTotal()
         {
             try
             {
-                SqlCommand cmd =
-                    new SqlCommand(
-                        "sp_count_pasien",
-                        conn);
-
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                SqlParameter total =
-                    new SqlParameter();
-
-                total.ParameterName = "@total";
-                total.SqlDbType = SqlDbType.Int;
-                total.Direction = ParameterDirection.Output;
-
-                cmd.Parameters.Add(total);
-
-                conn.Open();
-
-                cmd.ExecuteNonQuery();
-
-                lblTotal.Text =
-                    "Total Pasien : " +
-                    total.Value.ToString();
-
-                conn.Close();
+                lblTotal.Text = "Total Pasien : " + dbLogic.CountPasien();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error : " + ex.Message);
-
-                conn.Close();
+                MessageBox.Show("Gagal hitung total : " + ex.Message);
             }
         }
 
-        private void FormDataPasien_Load(object sender, EventArgs e)
+        private bool ValidasiInput()
         {
-            // TODO: This line of code loads data into the 'hasilPemeriksaanLabDBDataSet.PASIEN' table. You can move, or remove it, as needed.
-            this.pASIENTableAdapter.Fill(this.hasilPemeriksaanLabDBDataSet.PASIEN);
-            TampilData();
-            HitungTotal();
+            if (txtNamaPasien.Text.Trim() == "" ||
+                cmbJK.Text.Trim() == "" ||
+                txtAlamat.Text.Trim() == "" ||
+                txtNoTelp.Text.Trim() == "" ||
+                txtUsername.Text.Trim() == "" ||
+                txtPassword.Text.Trim() == "")
+            {
+                MessageBox.Show("Semua data harus diisi!");
+                return false;
+            }
 
-            cmbJK.Items.Add("Laki-Laki");
-            cmbJK.Items.Add("Perempuan");
+            if (!Regex.IsMatch(txtNamaPasien.Text, @"^[a-zA-Z\s]+$"))
+            {
+                MessageBox.Show("Nama pasien hanya boleh huruf dan spasi!");
+                return false;
+            }
 
-            txtId.Visible = false;
+            if (!Regex.IsMatch(txtAlamat.Text, @"^[a-zA-Z0-9\s]+$"))
+            {
+                MessageBox.Show("Alamat tidak boleh mengandung simbol!");
+                return false;
+            }
+
+            if (!Regex.IsMatch(txtNoTelp.Text, @"^[0-9]+$"))
+            {
+                MessageBox.Show("Nomor telepon hanya boleh angka!");
+                return false;
+            }
+
+            if (!Regex.IsMatch(txtUsername.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageBox.Show("Email tidak valid!");
+                return false;
+            }
+
+            if (!Regex.IsMatch(txtPassword.Text, @"^[a-zA-Z0-9]+$"))
+            {
+                MessageBox.Show("Password tidak boleh mengandung simbol!");
+                return false;
+            }
+
+            if (txtPassword.Text.Length < 6)
+            {
+                MessageBox.Show("Password minimal 6 karakter!");
+                return false;
+            }
+
+            return true;
+        }
+
+        void Bersih()
+        {
+            txtId.Clear();
+            txtNamaPasien.Clear();
+            cmbJK.SelectedIndex = -1;
+            txtAlamat.Clear();
+            txtNoTelp.Clear();
+            txtUsername.Clear();
+            txtPassword.Clear();
+            dtTanggal.Value = DateTime.Now;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            if (!ValidasiInput())
+                return;
+
             try
             {
-                SqlCommand cmd =
-                    new SqlCommand(
-                        "sp_tambah_pasien",
-                        conn);
+                dbLogic.InsertPasien(
+                    txtNamaPasien.Text,
+                    cmbJK.Text,
+                    dtTanggal.Value,
+                    txtAlamat.Text,
+                    txtNoTelp.Text,
+                    txtUsername.Text,
+                    txtPassword.Text
+                );
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue(
-                    "@nama_pasien",
-                    txtNamaPasien.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@jenis_kelamin",
-                    cmbJK.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@tanggal_lahir",
-                    dtTanggal.Value);
-
-                cmd.Parameters.AddWithValue(
-                    "@alamat",
-                    txtAlamat.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@no_telp",
-                    txtNoTelp.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@email",
-                    txtUsername.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@password_pasien",
-                    txtPassword.Text);
-
-                conn.Open();
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-
-                MessageBox.Show(
-                    "Data Pasien Berhasil Ditambah");
+                MessageBox.Show("Data pasien berhasil ditambah");
 
                 TampilData();
                 HitungTotal();
+                Bersih();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error : " + ex.Message);
-
-                conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
-        }
-
-        private void txtNamaPasien_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
+            if (txtId.Text == "")
             {
-                SqlCommand cmd =
-                    new SqlCommand(
-                        "sp_update_pasien",
-                        conn);
-
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue(
-                    "@id_pasien",
-                    txtId.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@nama_pasien",
-                    txtNamaPasien.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@jenis_kelamin",
-                    cmbJK.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@tanggal_lahir",
-                    dtTanggal.Value);
-
-                cmd.Parameters.AddWithValue(
-                    "@alamat",
-                    txtAlamat.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@no_telp",
-                    txtNoTelp.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@email",
-                    txtUsername.Text);
-
-                cmd.Parameters.AddWithValue(
-                    "@password_pasien",
-                    txtPassword.Text);
-
-                conn.Open();
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-
-                MessageBox.Show(
-                    "Data Berhasil Diupdate");
-
-                TampilData();
+                MessageBox.Show("Pilih data yang akan diupdate!");
+                return;
             }
 
+            if (!ValidasiInput())
+                return;
+
+            try
+            {
+                dbLogic.UpdatePasien(
+                    Convert.ToInt32(txtId.Text),
+                    txtNamaPasien.Text,
+                    cmbJK.Text,
+                    dtTanggal.Value,
+                    txtAlamat.Text,
+                    txtNoTelp.Text,
+                    txtUsername.Text,
+                    txtPassword.Text
+                );
+
+                MessageBox.Show("Data berhasil diupdate");
+
+                TampilData();
+                HitungTotal();
+                Bersih();
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error : " + ex.Message);
-
-                conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (txtId.Text == "")
+            {
+                MessageBox.Show("Pilih data yang akan dihapus!");
+                return;
+            }
+
+            DialogResult hasil = MessageBox.Show(
+                "Yakin ingin menghapus data ini?",
+                "Konfirmasi",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (hasil == DialogResult.No)
+                return;
+
             try
             {
-                SqlCommand cmd =
-                    new SqlCommand(
-                        "sp_hapus_pasien",
-                        conn);
+                dbLogic.DeletePasien(Convert.ToInt32(txtId.Text));
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue(
-                    "@id_pasien",
-                    txtId.Text);
-
-                conn.Open();
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-
-                MessageBox.Show(
-                    "Data Berhasil Dihapus");
+                MessageBox.Show("Data berhasil dihapus");
 
                 TampilData();
                 HitungTotal();
+                Bersih();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error : " + ex.Message);
-
-                conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
 
@@ -270,85 +222,40 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
             HitungTotal();
         }
 
-        private void dgvPasien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPasien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                int i = e.RowIndex;
-
-                txtId.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[0].Value.ToString();
-
-                txtNamaPasien.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[1].Value.ToString();
-
-                cmbJK.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[2].Value.ToString();
-
-                dtTanggal.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[3].Value.ToString();
-
-                txtAlamat.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[4].Value.ToString();
-
-                txtNoTelp.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[5].Value.ToString();
-
-                txtUsername.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[6].Value.ToString();
-
-                txtPassword.Text =
-                    dgvPasien.Rows[i]
-                    .Cells[7].Value.ToString();
+                txtId.Text = dgvPasien.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtNamaPasien.Text = dgvPasien.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cmbJK.Text = dgvPasien.Rows[e.RowIndex].Cells[2].Value.ToString();
+                dtTanggal.Value = Convert.ToDateTime(dgvPasien.Rows[e.RowIndex].Cells[3].Value);
+                txtAlamat.Text = dgvPasien.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtNoTelp.Text = dgvPasien.Rows[e.RowIndex].Cells[5].Value.ToString();
+                txtUsername.Text = dgvPasien.Rows[e.RowIndex].Cells[6].Value.ToString();
+                txtPassword.Text = dgvPasien.Rows[e.RowIndex].Cells[7].Value.ToString();
             }
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnTesInjection_Click(object sender, EventArgs e)
         {
+            if (txtNamaPasien.Text == "")
+            {
+                MessageBox.Show("Pilih data pasien dulu!");
+                return;
+            }
+
             try
             {
-                conn.Open();
+                dbLogic.TesInjection(txtNamaPasien.Text);
 
-                string query =
-                "UPDATE PASIEN " +
-                "SET nama_pasien='HACKED' " +
-                "WHERE nama_pasien='" +
-                txtNamaPasien.Text + "'";
-
-                MessageBox.Show(query);
-
-                SqlCommand cmd =
-                    new SqlCommand(query, conn);
-
-                int result =
-                    cmd.ExecuteNonQuery();
-
-                MessageBox.Show(
-                    result + " data berhasil dihack");
-
-                conn.Close();
+                MessageBox.Show("Data berhasil dihack");
 
                 TampilData();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error : " + ex.Message);
-
-                conn.Close();
+                MessageBox.Show("Error : " + ex.Message);
             }
         }
 
@@ -356,45 +263,177 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
         {
             try
             {
-                conn.Open();
+                dbLogic.ResetPasien();
 
-                string query = @"
-
-                        UPDATE PASIEN
-                        SET nama_pasien = b.nama_pasien,
-                            jenis_kelamin = b.jenis_kelamin,
-                            tanggal_lahir = b.tanggal_lahir,
-                            alamat = b.alamat,
-                            no_telp = b.no_telp,
-                            email = b.email,
-                            password_pasien = b.password_pasien
-
-                        FROM PASIEN p
-                        INNER JOIN PASIEN_BACKUP b
-                        ON p.id_pasien = b.id_pasien
-
-                        ";
-
-                SqlCommand cmd =
-                    new SqlCommand(query, conn);
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show(
-                    "Data berhasil direstore");
-
-                conn.Close();
+                MessageBox.Show("Data berhasil direstore");
 
                 TampilData();
                 HitungTotal();
             }
-
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Reset gagal : " + ex.Message);
+                MessageBox.Show("Reset gagal : " + ex.Message);
+            }
+        }
 
-                conn.Close();
+        private void btnImportExcel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Pilih File Excel Pasien";
+            openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx|Excel 97-2003 Files (*.xls)|*.xls";
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            string filePath = openFileDialog.FileName;
+            string extension = Path.GetExtension(filePath).ToLower();
+            string connString = "";
+
+            if (extension == ".xls")
+            {
+                connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath +
+                             ";Extended Properties='Excel 8.0;HDR=YES;IMEX=1;'";
+            }
+            else if (extension == ".xlsx")
+            {
+                connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath +
+                             ";Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1;'";
+            }
+            else
+            {
+                MessageBox.Show("Format file harus .xls atau .xlsx");
+                return;
+            }
+
+            try
+            {
+                DataTable dtExcel = new DataTable();
+
+                using (OleDbConnection excelConn = new OleDbConnection(connString))
+                {
+                    excelConn.Open();
+
+                    DataTable dtSheets = excelConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+
+                    if (dtSheets == null || dtSheets.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Sheet di dalam file Excel tidak ditemukan.");
+                        return;
+                    }
+
+                    string sheetName = dtSheets.Rows[0]["TABLE_NAME"].ToString();
+
+                    OleDbDataAdapter da = new OleDbDataAdapter(
+                        "SELECT * FROM [" + sheetName + "]", excelConn);
+
+                    da.Fill(dtExcel);
+                }
+
+                string[] kolomWajib =
+                {
+                    "nama_pasien",
+                    "jenis_kelamin",
+                    "tanggal_lahir",
+                    "alamat",
+                    "no_telp",
+                    "email",
+                    "password_pasien"
+                };
+
+                foreach (string kolom in kolomWajib)
+                {
+                    if (!dtExcel.Columns.Contains(kolom))
+                    {
+                        MessageBox.Show("Kolom Excel tidak lengkap. Kolom hilang: " + kolom);
+                        return;
+                    }
+                }
+
+                int berhasil = 0;
+
+                foreach (DataRow row in dtExcel.Rows)
+                {
+                    string nama = row["nama_pasien"].ToString().Trim();
+                    string jk = row["jenis_kelamin"].ToString().Trim();
+                    string tanggal = row["tanggal_lahir"].ToString().Trim();
+                    string alamat = row["alamat"].ToString().Trim();
+                    string noTelp = row["no_telp"].ToString().Trim();
+                    string email = row["email"].ToString().Trim();
+                    string password = row["password_pasien"].ToString().Trim();
+
+                    if (nama == "" && jk == "" && tanggal == "" && alamat == "" &&
+                        noTelp == "" && email == "" && password == "")
+                    {
+                        continue;
+                    }
+
+                    if (nama == "" || jk == "" || tanggal == "" || alamat == "" ||
+                        noTelp == "" || email == "" || password == "")
+                    {
+                        MessageBox.Show("Ada baris yang belum lengkap.");
+                        return;
+                    }
+
+                    if (!Regex.IsMatch(nama, @"^[a-zA-Z\s]+$"))
+                    {
+                        MessageBox.Show("Nama hanya boleh huruf dan spasi: " + nama);
+                        return;
+                    }
+
+                    if (jk != "Laki-Laki" && jk != "Perempuan")
+                    {
+                        MessageBox.Show("Jenis kelamin harus Laki-Laki atau Perempuan.");
+                        return;
+                    }
+
+                    DateTime tglLahir;
+
+                    if (!DateTime.TryParse(tanggal, out tglLahir))
+                    {
+                        MessageBox.Show("Tanggal lahir tidak valid pada data: " + nama);
+                        return;
+                    }
+
+                    if (!Regex.IsMatch(noTelp, @"^[0-9]+$"))
+                    {
+                        MessageBox.Show("Nomor telepon hanya boleh angka: " + nama);
+                        return;
+                    }
+
+                    if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                    {
+                        MessageBox.Show("Email tidak valid: " + email);
+                        return;
+                    }
+
+                    if (password.Length < 6)
+                    {
+                        MessageBox.Show("Password minimal 6 karakter: " + nama);
+                        return;
+                    }
+
+                    dbLogic.InsertPasien(
+                        nama,
+                        jk,
+                        tglLahir,
+                        alamat,
+                        noTelp,
+                        email,
+                        password
+                    );
+
+                    berhasil++;
+                }
+
+                MessageBox.Show(berhasil + " data berhasil diimport ke database.");
+
+                TampilData();
+                HitungTotal();
+                Bersih();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal import Excel: " + ex.Message);
             }
         }
     }

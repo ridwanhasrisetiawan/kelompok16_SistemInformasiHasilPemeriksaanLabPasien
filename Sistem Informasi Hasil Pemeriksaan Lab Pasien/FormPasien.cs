@@ -79,5 +79,14 @@ namespace Sistem_Informasi_Hasil_Pemeriksaan_Lab_Pasien
 
             this.Hide();
         }
+
+        private void btnCetak_Click(object sender, EventArgs e)
+        {
+            FormCetakHasil frm =
+            new FormCetakHasil(
+            Convert.ToInt32(idPasien));
+
+            frm.Show();
+        }
     }
 }

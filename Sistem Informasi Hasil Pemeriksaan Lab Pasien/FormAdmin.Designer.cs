@@ -39,14 +39,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(352, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 16);
+            this.label1.Size = new System.Drawing.Size(145, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "DASHBORD ADMIN";
             // 
             // btnDataPasien
             // 
+            this.btnDataPasien.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDataPasien.Location = new System.Drawing.Point(133, 109);
             this.btnDataPasien.Name = "btnDataPasien";
             this.btnDataPasien.Size = new System.Drawing.Size(111, 23);
@@ -57,6 +59,7 @@
             // 
             // btnDataDokter
             // 
+            this.btnDataDokter.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDataDokter.Location = new System.Drawing.Point(133, 164);
             this.btnDataDokter.Name = "btnDataDokter";
             this.btnDataDokter.Size = new System.Drawing.Size(111, 23);
@@ -67,6 +70,7 @@
             // 
             // btnPemeriksaan
             // 
+            this.btnPemeriksaan.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPemeriksaan.Location = new System.Drawing.Point(133, 216);
             this.btnPemeriksaan.Name = "btnPemeriksaan";
             this.btnPemeriksaan.Size = new System.Drawing.Size(127, 23);
@@ -77,6 +81,7 @@
             // 
             // btnHasilLab
             // 
+            this.btnHasilLab.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHasilLab.Location = new System.Drawing.Point(133, 272);
             this.btnHasilLab.Name = "btnHasilLab";
             this.btnHasilLab.Size = new System.Drawing.Size(75, 23);
@@ -87,6 +92,7 @@
             // 
             // btnLogout
             // 
+            this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Location = new System.Drawing.Point(133, 329);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 23);

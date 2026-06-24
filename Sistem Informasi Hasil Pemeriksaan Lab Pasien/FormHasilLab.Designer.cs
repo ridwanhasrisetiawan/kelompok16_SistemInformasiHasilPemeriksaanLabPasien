@@ -36,9 +36,10 @@
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(335, 379);
+            this.btnView.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.Location = new System.Drawing.Point(105, 385);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(75, 23);
+            this.btnView.Size = new System.Drawing.Size(89, 30);
             this.btnView.TabIndex = 0;
             this.btnView.Text = "VIEW";
             this.btnView.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(314, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 16);
+            this.label1.Size = new System.Drawing.Size(174, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "HASIL LABORATORIUM";
             // 
